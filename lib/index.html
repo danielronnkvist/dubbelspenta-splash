@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dubbelspenta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/mytweets.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#sittning").click(function(){
+        $("#thecontent").load("sittning.html");
+        //location.hash = 'sittningen';
+      });
+      $("#grupp").click(function(){
+        $("#thecontent").load("grupp.html");
+        //location.hash = 'gruppen';
+      });
+      $("#tag").click(function(){
+        $("#thecontent").load("tag.html");
+        //location.hash = 'tåget';
+      });
+      $("#budord").click(function(){
+        $("#thecontent").load("budord.html");
+        //location.hash = 'budorden';
+      });
+      $("#historia").click(function(){
+        $("#thecontent").load("historia.html");
+        //location.hash = 'budorden';
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+
+    <div id="wrap">
+      <div class="container">
+        <div align="center" id="header">
+         <a href="http://dubbelspenta.se" onclick="onClick();" style="outline:none;"> 
+         <img src="img/header.jpg" alt="" />
+         </a>
+        </div>
+
+        <div class="row">
+          <nav class="navbar navbar-default navbar-dubbelspenta">
+            <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+               </button>
+             <a class="navbar-brand" href="http://dubbelspenta.se">Dubbelspenta</a>
+            </div>
+           <div class="collapse navbar-collapse" id="navbar-collapse-target">
+             <ul class="nav navbar-nav navbar-right">
+               <li><a id="sittning" style="cursor:pointer;">Sittningen</a></li>
+               <li><a id="grupp" style="cursor:pointer;">Gruppen</a></li>
+               <li><a id="tag" style="cursor:pointer;">Tåget</a></li>
+               <li><a id="budord" style="cursor:pointer;">Budorden</a></li>
+               <li><a id="historia" style="cursor:pointer;">Historian</a></li>
+             </ul>
+           </div>
+          </nav>
+        </div>
+        
+        <div id="thecontent">
+          <h2>Tid tills nästa avgång:</h2>
+              <div id="countdown" class="cd">
+                  <script>
+                  // set the date we're counting down to
+                  var current_date = new Date().getTime();
+                  var target_date = new Date("March 22, 2014 19:35:00").getTime();
+                  if(current_date >= new Date("March 22, 2014 19:40:00").getTime())
+                    target_date = new Date("March 22, 2014 20:40:00").getTime();
+                   
+                  // variables for time units
+                  var days, hours, minutes, seconds;
+                   
+                  // get tag element
+                  var countdown = document.getElementById("countdown");
+                   
+                  // update the tag with id "countdown" every 1 second
+                  setInterval(function () {
+                   
+                      // find the amount of "seconds" between now and target
+                      current_date = new Date().getTime();
+                      var seconds_left = (target_date - current_date) / 1000;
+                   
+                      // do some time calculations
+                      days = parseInt(seconds_left / 86400);
+                      seconds_left = seconds_left % 86400;
+                       
+                      hours = parseInt(seconds_left / 3600);
+                      seconds_left = seconds_left % 3600;
+                       
+                      minutes = parseInt(seconds_left / 60);
+                      seconds = parseInt(seconds_left % 60);
+                       
+                      // format countdown string + set tag value
+                      if(days<0 || hours<0 || minutes<0 || seconds <0 || 
+                        (days==0 && hours==0 && minutes==0 && seconds ==0 )){
+                        var thacontent = document.getElementById("thecontent");
+                        thacontent.innerHTML = '<div id="countdown" class="cd">heyy</div>';
+                        countdown = document.getElementById("countdown");
+                      countdown.innerHTML = "<h1>Dubbel-spenta-tå-get,<br>Dubbel-spenta-tå-get,<br>Sha-la-la-la,<br>Sha-la-la-la!</h1>";
+                      }
+                      else{
+                      countdown.innerHTML = "<h3>" + days + "d, " + hours + "h, "
+                      + minutes + "m, " + seconds + "s </h3>";  
+                      }
+                   
+                  }, 1000);
+                  </script>
+            </div>
+            <h2>Dubbelspenta @ Instagram:</h2>
+            <div id="insta">
+              <iframe src="http://www.intagme.com/in/?u=ZHViYmVsc3BlbnRhfHNsfDI1MHwyfDN8ZmZmZmZmfHllc3w1fHVuZGVmaW5lZA==" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:265px; height: 265px" ></iframe>
+            </div>
+            <h2>#Dubbelspenta @ Twitter:</h2>
+        </div> 
+        <div id="push">
+        </div>
+      </div>
+      </div>
+      <footer class="footer">
+          
+         <p class="credit" align="center"><br><a href="http://dubbelspenta.se">Dubbelspentasittningen</a>, 2014</p>
+      </footer>
+      
+      <!--<script src="js/jquery-2.0.3.min.js"></script>-->
+      <script src="js/bootstrap.min.js"></script>
+  </body>
+
+</html>
